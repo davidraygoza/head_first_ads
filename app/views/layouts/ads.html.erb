@@ -1,6 +1,24 @@
 <html>
-	<head><%= controller.action_name%></head>
+	<head>
+		<title><%= controller.action_name%></title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+	</head>
 	<body>
+		<div id="wrapper">
+			<div id="header">
+				<h1>MeBay</h1>
+				<ul id="nav">
+					<li><a href='/ads/'>All ads</a></li>
+				</ul>
+			</div>
+			<div id='content'>
+				<%=yield%>
+			</div>
+			<div id='clearfooter'></div>			
+		</div>
+		<div id='footer'></div>
 		
 	</body>
 </html>
