@@ -5,4 +5,4 @@
 		<p><b>Seller id:</b> <%= @ad.seller_id%></p>
 		<p><b>Email:</b><%= @ad.email%> </p>
 		<img src="<%= @ad.img_url%>" /><br />
-		<a href="/ads/">Back</a>
+		<a href="/ads/">List</a> 	<a href="/ads/<%= @ad.id%>/edit">Edit</a>

@@ -1,4 +1,6 @@
 class AdsController < ApplicationController
+  before_filter :check_logged_in , :only=>[:edit,:update]
+
     def show 
       @ad= Ad.find(params[:id])
       respond_to do |format|
@@ -22,4 +24,18 @@ class AdsController < ApplicationController
         @ad.save
         redirect_to "/ads/#{@ad.id}"
     end
+    def edit
+       @ad=Ad.find(params[:id])
+    end
+    def update
+        @ad=Ad.find(params[:id])
+        @ad.update_attributes(params[:ad])
+        redirect_to "/ads/#{@ad.id}"
+    end
+    private
+      def check_logged_in
+        authenticate_or_request_with_http_basic("Ads") do |username,password|
+          username=='admin'&&password=='12345'
+      end
+     end
 end
