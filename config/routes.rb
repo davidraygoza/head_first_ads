@@ -1,5 +1,6 @@
 HeadFirstAds::Application.routes.draw do  
       resources :ads 
+      match 'ads/:id/delete' => 'ads#destroy' , :as => :delete
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
