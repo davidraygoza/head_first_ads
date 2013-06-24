@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_filter :check_logged_in , :only=>[:edit,:update]
+  before_filter :check_logged_in , :only=>[:edit,:update,:destroy]
 
     def show 
       @ad= Ad.find(params[:id])
@@ -31,6 +31,11 @@ class AdsController < ApplicationController
         @ad=Ad.find(params[:id])
         @ad.update_attributes(params[:ad])
         redirect_to "/ads/#{@ad.id}"
+    end
+    def destroy 
+         @ad=Ad.find(params[:id])
+         @ad.destroy
+         redirect_to "/ads/"
     end
     private
       def check_logged_in

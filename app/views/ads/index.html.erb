@@ -1,5 +1,7 @@
 <ul>
 	<% for ad in @ads%>
-		<li><a href="/ads/<%=ad.id%>"><%=ad.name%></a></li>
+		<li><a href="/ads/<%=ad.id%>"><%=ad.name%></a> <a href="/ads/<%=ad.id%>/edit">Edit</a> 
+			<%= link_to 'Destroy', ad, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</li>
 	<%end%>
-	</ul>
+</ul>
