@@ -32,8 +32,11 @@ class AdsController < ApplicationController
     end
     def update
         @ad=Ad.find(params[:id])
-        @ad.update_attributes(params[:ad])
-        redirect_to "/ads/#{@ad.id}"
+       if  @ad.update_attributes(params[:ad])
+          redirect_to "/ads/#{@ad.id}"
+       else
+          render :template=>"/ads/edit"  
+       end
     end
     def destroy 
          @ad=Ad.find(params[:id])
