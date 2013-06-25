@@ -21,8 +21,11 @@ class AdsController < ApplicationController
     end
     def create
         @ad=Ad.new(params[:ad])
-        @ad.save
-        redirect_to "/ads/#{@ad.id}"
+       if @ad.save
+          redirect_to "/ads/#{@ad.id}"
+        else
+          render :template => "ads/new"
+        end  
     end
     def edit
        @ad=Ad.find(params[:id])
